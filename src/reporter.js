@@ -34,7 +34,6 @@ class Reporter {
                 skip_empty_lines: true
             });
         }
-        console.log(records.length);
 
         record.time = record.time.toLocaleString();
         record.success = record.success ? 'success' : 'failed';
