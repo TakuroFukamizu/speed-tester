@@ -7,6 +7,17 @@ TOKEN=YOUR-FAST.COM-TOKEN
 REPORT_DIR=path/to/logs
 ```
 
+## Run
+
+```sh
+$ yarn start
+yarn run v1.19.0
+start test
+2020-5-18 2:10:00: Failed UNKNOWN: Unknown error
+2020-5-18 2:10:00: Speed: 296.83712 Mbps
+2020-5-18 2:11:00: Speed: 260.17792 Mbps
+```
+
 ## Log format
 
 ```csv
