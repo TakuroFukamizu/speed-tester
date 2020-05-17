@@ -4,8 +4,15 @@
 
 ```sh
 TOKEN=YOUR-FAST.COM-TOKEN
+CRONTAB=*/10 * * * *
 REPORT_DIR=path/to/logs
 ```
+
+### CRONTAB examples
+
+- `*/10 * * * *`: every 10 min
+- `* * * * *`: every min;
+- `*/10 * * * * *`: every 10 sec;
 
 ## Run
 
