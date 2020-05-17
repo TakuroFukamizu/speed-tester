@@ -3,8 +3,8 @@
 ## dotenv
 
 ```sh
-TOKEN=YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm
-REPORT_DIR=C:/Users/mad_t/src/speed-tester/logs
+TOKEN=YOUR-FAST.COM-TOKEN
+REPORT_DIR=path/to/logs
 ```
 
 ## Log format
