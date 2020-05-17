@@ -1,0 +1,19 @@
+{
+  "name": "speed-tester",
+  "version": "0.1.0",
+  "main": "src/main.js",
+  "author": "TakuroFukamizu<takuro.f.1987@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "csv-parse": "^4.9.1",
+    "csv-stringify": "^5.5.0",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^8.2.0",
+    "fast-speedtest-api": "^0.3.2",
+    "node-cron": "^2.0.3"
+  }
+}
