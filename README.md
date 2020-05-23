@@ -33,3 +33,9 @@ start test
 2020-5-18 2:02:00,success,316.5184
 2020-5-18 2:03:00,success,282.48064
 ```
+
+## Run on docker
+
+```sh
+docker-compose
+```

@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+    app:
+        build: .
+        environment:
+            TOKEN: ${TOKEN}
+        volumes:
+            - /mnt/speedtest-logs:/mnt
+    s3fs:
+        image: xueshanf/s3fs:latest
+        environment:
+            AWSACCESSKEYID: ${ACCESS_KEY_ID}
+            AWSSECRETACCESSKEY: ${SECRET_ACCESS_KEY}
+            BUCKET: ${BUCKET}
+        cap_add:
+            - MKNOD
+            - SYS_ADMIN
+        security_opt:
+            - apparmor:unconfined
+        devices:
+            - /dev/fuse
+        volumes:
+            - /mnt/speedtest-logs:/mnt:shared
+            - /root/.s3fs:/root/.s3fs
+        command: /usr/bin/s3fs -f -o allow_other -o use_cache=/tmp -o passwd_file=/root/.s3fs ${BUCKET} /mnt/
