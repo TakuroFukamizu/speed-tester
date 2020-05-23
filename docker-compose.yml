@@ -7,7 +7,7 @@ services:
             TOKEN: ${TOKEN}
             REPORT_DIR: /mnt/logs
         volumes: 
-            - /mnt/speedtest-logs:/mnt/logs
+            - ${HOST_MOUNTDIR}:/mnt/logs
     s3fs:
         image: xueshanf/s3fs:latest
         environment:
@@ -22,6 +22,6 @@ services:
         devices:
             - /dev/fuse
         volumes:
-            - /mnt/speedtest-logs:/mnt:shared
-            - /root/.s3fs:/root/.s3fs
+            - ${HOST_MOUNTDIR}:/mnt:shared
+            - ./docker/s3fs:/root/.s3fs
         command: /usr/bin/s3fs -f -o allow_other -o use_cache=/tmp -o passwd_file=/root/.s3fs ${BUCKET} /mnt/
