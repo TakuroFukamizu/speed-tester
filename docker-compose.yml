@@ -5,8 +5,9 @@ services:
         build: .
         environment:
             TOKEN: ${TOKEN}
-        volumes:
-            - /mnt/speedtest-logs:/mnt
+            REPORT_DIR: /mnt/logs
+        volumes: 
+            - /mnt/speedtest-logs:/mnt/logs
     s3fs:
         image: xueshanf/s3fs:latest
         environment:
