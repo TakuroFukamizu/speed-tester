@@ -1,9 +1,10 @@
-const FastSpeedtest = require("fast-speedtest-api");
+import FastSpeedtest from 'fast-speedtest-api';
+import EventEmitter from 'events';
 
-class Controller {
-    constructor(token, reporter) {
+export default class Controller extends EventEmitter {
+    constructor(token) {
+        super();
         this.limit = 5;
-        this.reporter = reporter;
         this.speedtest = new FastSpeedtest({
             token: token, // required
             verbose: false, // default: false
@@ -21,7 +22,7 @@ class Controller {
         for(let i=0; i<this.limit; i++) {
             const {success, speed} = await this.doTest(time);
             if (success) {
-                await this.reporter.add({
+                this.emit('tested', {
                     time,
                     success,
                     speed,
@@ -31,6 +32,11 @@ class Controller {
             }
         }
         if (!isSuccess) {
+            this.emit('tested', {
+                time,
+                success: false,
+                speed: null,
+            });
             throw new Error(`retry is out of limit ${this.limit}`);
         }
     }
@@ -49,5 +55,3 @@ class Controller {
         return { success, speed };
     }
 }
-
-module.exports = Controller;

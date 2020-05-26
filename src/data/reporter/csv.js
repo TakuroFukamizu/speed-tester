@@ -1,13 +1,11 @@
 
-const fs = require('fs');
-const path = require('path');
-// const csv = require('csv');
-const parse = require("csv-parse/lib/sync");
-const stringify = require("csv-stringify/lib/sync");
-// const csvWriter = require('csv-writer');
-// const createCsvWriter = csvWriter.createObjectCsvWriter;
+import fs from 'fs';
+import path from 'path';
+import parse from 'csv-parse/lib/sync.js';
+import stringify from 'csv-stringify/lib/sync.js';
 
-class Reporter {
+export default class CsvReporter {
+
     constructor(filepath) {
         this.filepath = filepath;
         this.headers = [
@@ -41,7 +39,6 @@ class Reporter {
         
         const csvData = stringify(records, { header: false, columns: this.headers});
         fs.writeFileSync(filepath, csvData);
+        return true;
     }
 }
-
-module.exports = Reporter;

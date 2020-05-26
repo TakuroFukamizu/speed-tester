@@ -5,7 +5,7 @@
   "author": "TakuroFukamizu<takuro.f.1987@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/main.js"
+    "start": "node --experimental-modules src/main.js"
   },
   "devDependencies": {},
   "dependencies": {
@@ -14,6 +14,7 @@
     "csv-writer": "^1.6.0",
     "dotenv": "^8.2.0",
     "fast-speedtest-api": "^0.3.2",
+    "mssql": "^6.2.0",
     "node-cron": "^2.0.3"
   }
 }
