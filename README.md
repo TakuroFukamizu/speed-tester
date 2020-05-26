@@ -41,5 +41,5 @@ start test
 ## Run on docker
 
 ```sh
-docker-compose
+docker-compose up --build
 ```

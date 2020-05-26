@@ -8,3 +8,4 @@ services:
             USE_DB: 'true'
             DB_HOST: ${DB_HOST}
             DB_DBNAME: ${DB_DBNAME}
+            CRONTAB: '*/10 * * * * *'
