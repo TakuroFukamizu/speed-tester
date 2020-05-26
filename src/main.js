@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import Controller from './controller.js';
 import CsvReporter from './data/reporter/csv.js';
 import DbReporter from './data/reporter/db.js';
-
+import HelthCheck from './helthCheck.js';
 
 dotenv.config();
 
@@ -19,10 +19,12 @@ const dbConfig = {
     database: process.env.DB_DBNAME || 'speed-tester',
 };
 const workerName = process.env.WORKER_NAME || os.hostname() || 'default';
+const port = process.env.PORT || 8080;
 
 const reporter = usedb
     ? new DbReporter(dbConfig, workerName) 
     : new CsvReporter(filepath);
+const helthCheck = new HelthCheck(port);
 const ctrl = new Controller(token);
 ctrl.on('tested', async ({time, success, speed}) => {
     try {
@@ -31,6 +33,7 @@ ctrl.on('tested', async ({time, success, speed}) => {
             success,
             speed,
         });
+        helthCheck.setLastStatus(time, success, speed);
     } catch(ex) {
         console.error(ex);
     }
@@ -51,3 +54,4 @@ const test = async () => {
 task = cron.schedule(crontab, () => test(), { scheduled: false });
 task.start();
 console.info(`start testing on ${workerName} > token: ${token}, usedb: ${usedb}`);
+helthCheck.run();

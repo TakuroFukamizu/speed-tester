@@ -4,6 +4,7 @@ ARG TZ="Asia/Tokyo"
 
 # ENV TOKEN
 ENV CRONTAB="*/10 * * * *"
+ENV PORT=80
 
 WORKDIR /app
 
@@ -23,4 +24,5 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 COPY . .
+EXPOSE 80
 ENTRYPOINT ["yarn", "start"]
