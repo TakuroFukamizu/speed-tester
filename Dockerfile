@@ -1,7 +1,6 @@
 FROM node:10-alpine
 
 # ENV TOKEN
-ENV REPORT_DIR=/opt/logs
 ENV CRONTAB="*/10 * * * *"
 
 WORKDIR /app
@@ -17,5 +16,4 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 COPY . .
-EXPOSE 80
 ENTRYPOINT ["yarn", "start"]

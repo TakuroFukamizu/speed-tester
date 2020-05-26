@@ -5,23 +5,6 @@ services:
         build: .
         environment:
             TOKEN: ${TOKEN}
-            REPORT_DIR: /mnt/logs
-        volumes: 
-            - ${HOST_MOUNTDIR}:/mnt/logs
-    s3fs:
-        image: xueshanf/s3fs:latest
-        environment:
-            AWSACCESSKEYID: ${ACCESS_KEY_ID}
-            AWSSECRETACCESSKEY: ${SECRET_ACCESS_KEY}
-            BUCKET: ${BUCKET}
-        cap_add:
-            - MKNOD
-            - SYS_ADMIN
-        security_opt:
-            - apparmor:unconfined
-        devices:
-            - /dev/fuse
-        volumes:
-            - ${HOST_MOUNTDIR}:/mnt:shared
-            - ./docker/s3fs:/root/.s3fs
-        command: /usr/bin/s3fs -f -o allow_other -o use_cache=/tmp -o passwd_file=/root/.s3fs ${BUCKET} /mnt/
+            USE_DB: 'true'
+            DB_HOST: ${DB_HOST}
+            DB_DBNAME: ${DB_DBNAME}
