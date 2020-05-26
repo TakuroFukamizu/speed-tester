@@ -4,7 +4,7 @@ services:
     app:
         build: .
         ports: 
-            '${PORT}:80'
+            - '${PORT}:80'
         environment:
             TOKEN: ${TOKEN}
             USE_DB: 'true'
@@ -12,3 +12,4 @@ services:
             DB_DBNAME: ${DB_DBNAME}
             CRONTAB: ${CRONTAB}
             WORKER_NAME: ${WORKER_NAME}
+        restart: always
