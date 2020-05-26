@@ -10,6 +10,7 @@ REPORT_DIR=path/to/logs
 USE_DB=true
 DB_HOST=dbhostname
 DB_DBNAME=speed-tester
+WORKER_NAME=worker1
 ```
 
 ### CRONTAB examples

@@ -50,4 +50,4 @@ const test = async () => {
 // start
 task = cron.schedule(crontab, () => test(), { scheduled: false });
 task.start();
-console.info(`start testing > token: ${token}, usedb: ${usedb}`);
+console.info(`start testing on ${workerName} > token: ${token}, usedb: ${usedb}`);

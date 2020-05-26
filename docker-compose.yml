@@ -9,3 +9,4 @@ services:
             DB_HOST: ${DB_HOST}
             DB_DBNAME: ${DB_DBNAME}
             CRONTAB: '*/10 * * * * *'
+            WORKER_NAME: ${WORKER_NAME}
