@@ -8,5 +8,5 @@ services:
             USE_DB: 'true'
             DB_HOST: ${DB_HOST}
             DB_DBNAME: ${DB_DBNAME}
-            CRONTAB: '*/10 * * * * *'
+            CRONTAB: ${CRONTAB}
             WORKER_NAME: ${WORKER_NAME}
