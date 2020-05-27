@@ -37,7 +37,8 @@ export default class Controller extends EventEmitter {
                 success: false,
                 speed: null,
             });
-            throw new Error(`retry is out of limit ${this.limit}`);
+            console.error(`retry is out of limit ${this.limit}`);
+            // TODO: logging to DB
         }
     }
 
